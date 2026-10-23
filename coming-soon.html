@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coming Soon — Jurgen Serbo</title>
+  <meta name="description" content="A first look at a project whose case study is still being written.">
+  <meta name="theme-color" content="#f5f3ee">
+  <script src="assets/js/theme.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%2322211e'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Georgia' font-size='18' fill='%23f5f3ee'%3EJ%3C/text%3E%3C/svg%3E">
+</head>
+<body data-page="case">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header data-header></header>
+
+  <main id="main">
+    <article class="wrap" data-soon>
+      <!-- Fallback when no project is selected (or JavaScript is off) -->
+      <header class="case-top">
+        <a class="back-link" href="index.html#more-work">← All work</a>
+        <h1 style="margin-top:36px">Coming soon</h1>
+        <p class="case-lede">This project isn’t available yet. I’m working day and night to finish it up.</p>
+      </header>
+    </article>
+  </main>
+
+  <footer data-footer></footer>
+
+  <script>
+    // Projects whose case studies are still being written.
+    // TODO: fill in role, date and summary for each as they come in.
+    const PROJECTS = [
+      { id: "walmart-all-access", name: "Walmart All Access", client: "Advantage Solutions", platform: "Web Platform",
+        logo: { text: "W", bg: "#0071ce", fg: "#fff" },
+        image: { src: "assets/img/card-walmart.jpg", w: 1600, h: 1211, alt: "Walmart All Access scheduling calendar" } },
+      { id: "boost-central", name: "Boost Central", client: "Advantage Solutions", platform: "Web Platform",
+        logo: { text: "BC", bg: "#1f3b73", fg: "#fff" },
+        image: { src: "assets/img/card-boost-central.jpg", w: 1600, h: 1165, alt: "Boost Central data table" } },
+      { id: "boost-retail", name: "Boost Retail", client: "Advantage Solutions", platform: "Mobile Platform",
+        logo: { text: "BR", bg: "#f2b705", fg: "#141412" },
+        image: { src: "assets/img/card-boost-retail.jpg", w: 1600, h: 1102, alt: "Boost Retail mobile app screens" } },
+      { id: "the-boat-app", name: "The Boat App & TheBoatDB", client: "Marine Data Cloud", platform: "Web + Mobile Platform",
+        logo: { text: "M", bg: "#0e8f8a", fg: "#fff" },
+        image: { src: "assets/img/card-marine.jpg", w: 1600, h: 1080, alt: "The Boat App onboarding screens" } },
+      { id: "akademi", name: "Akademi.al", client: "Akademi.al", platform: "Mobile Platform",
+        logo: { text: "A", bg: "#3b6ef5", fg: "#fff" },
+        image: { src: "assets/img/card-akademi.jpg", w: 1600, h: 1106, alt: "Akademi.al mobile app profile screens" } },
+    ];
+
+    (() => {
+      const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+      const logo = (p, cls = "logo") =>
+        `<span class="${cls}" style="--logo-bg:${p.logo.bg};--logo-fg:${p.logo.fg}" aria-hidden="true">${esc(p.logo.text)}</span>`;
+      const listOthers = (list, title) => `
+        <nav class="other-soon" aria-labelledby="others-title">
+          <h2 id="others-title">${title}</h2>
+          <ul>${list.map((o) => `
+            <li><a href="?p=${o.id}">${logo(o, "logo logo--sm")}
+              <span class="mini-card__text"><span class="mini-card__name">${esc(o.name)}</span><span class="meta">${esc(o.client)} · ${esc(o.platform)}</span></span>
+              <span class="mini-card__arrow" aria-hidden="true">→</span></a></li>`).join("")}
+          </ul>
+        </nav>`;
+
+      const root = document.querySelector("[data-soon]");
+      const id = new URLSearchParams(location.search).get("p");
+      const p = PROJECTS.find((x) => x.id === id);
+
+      if (!p) {
+        root.insertAdjacentHTML("beforeend", listOthers(PROJECTS, "Projects in progress"));
+        return;
+      }
+
+      document.title = `${p.name} — Jurgen Serbo`;
+      const others = PROJECTS.filter((x) => x !== p);
+      root.innerHTML = `
+        <header class="case-top">
+          <a class="back-link" href="index.html#more-work">← All work</a>
+          ${logo(p)}
+          <h1>${esc(p.name)}</h1>
+          <p class="project__role">${esc(p.client)}</p>
+          <span class="soon-badge meta"><img src="assets/img/coming-soon.gif" width="116" height="150" alt="">Case study coming soon</span>
+          <p class="case-lede">${p.summary ? esc(p.summary) : "I’m working day and night to finish this write-up. Here’s a first look in the meantime."}</p>
+          <dl class="meta-grid">
+            <div><dt>Client</dt><dd>${esc(p.client)}</dd></div>
+            <div><dt>Platform</dt><dd>${esc(p.platform)}</dd></div>
+            <div><dt>Role</dt><dd>${esc(p.role || "—")}</dd></div>
+            <div><dt>Date</dt><dd>${esc(p.date || "—")}</dd></div>
+          </dl>
+        </header>
+        <figure class="figure figure--wide">
+          <div class="figure__frame" data-zoom><img src="${p.image.src}" width="${p.image.w}" height="${p.image.h}" alt="${esc(p.image.alt)}"></div>
+        </figure>
+        ${listOthers(others, "More in progress")}`;
+    })();
+  </script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
