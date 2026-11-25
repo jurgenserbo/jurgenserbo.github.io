@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Neon Ordering — Jurgen Serbo</title>
-  <meta name="description" content="Case study: designing and managing Neon’s restaurant ordering platform — self-order kiosk, menu manager, cashier app and POS integrations.">
+  <meta name="description" content="Case study: Neon Ordering, a restaurant ordering platform — self-order kiosk, cashier app, menu manager and integrations — designed from research to release by one designer.">
   <meta name="theme-color" content="#f5f3ee">
   <script src="assets/js/theme.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,143 +23,187 @@
         <a class="back-link" href="index.html#neon-ordering">← All work</a>
         <div class="logo" style="--logo-bg:#ff5f1f;--logo-fg:#fff" aria-hidden="true">NO</div>
         <h1>Neon Ordering</h1>
-        <p class="project__role">Product Designer &amp; Product Manager, solo designer</p>
-        <p class="case-lede">A restaurant ordering platform for quick-service chains: a self-order kiosk for guests, a cashier app for staff, and a menu manager and integrations for the people who run the stores.</p>
+        <p class="project__role">Product Designer &amp; Product Manager</p>
+        <p class="case-lede">Restaurant ordering platform for quick-service chains, designed from research to release by one designer who also ran the product.</p>
         <dl class="meta-grid">
-          <div><dt>Company</dt><dd>Neon Screens</dd></div>
-          <div><dt>Role</dt><dd>Product design, Product management</dd></div>
-          <div><dt>Industry</dt><dd>Restaurants &amp; QSR</dd></div>
+          <div><dt>Client</dt><dd>Neon Screens</dd></div>
+          <div><dt>Platforms</dt><dd>Kiosk, Tablet POS, Web app</dd></div>
+          <div><dt>Team</dt><dd>Solo designer, with the dev team</dd></div>
           <div><dt>Date</dt><dd>2026 — Present</dd></div>
         </dl>
       </header>
 
       <figure class="figure figure--wide">
-        <div class="figure__frame" data-zoom><img src="assets/img/neon-ordering/pos-required-modifiers.png" width="1366" height="985" alt="Cashier app: an open check on the left with Hold, Stay, Send and Pay, and a combo’s modifier groups marked Required or Optional on the right" fetchpriority="high"></div>
+        <div class="figure__frame" data-zoom><img src="assets/img/neon-ordering/v2/pos-quick-order.png" width="1366" height="1024" alt="Cashier quick order screen with a category rail, menu item grid and order panel" fetchpriority="high"></div>
+        <figcaption>Cashier app, quick order</figcaption>
       </figure>
 
       <section class="case-section fade">
         <h2>Summary</h2>
-        <p>I’m the only designer on Neon’s ordering platform, and its product manager. I took it from competitor research and open questions on a whiteboard to three releases in our first client’s stores, a US quick-service burger chain, and I’m now designing the cashier app and integrations for the next clients.</p>
+        <p>Neon Ordering is a restaurant ordering platform built for quick-service chains: a self-order kiosk for guests, a cashier app for staff, and a menu manager and integrations for the people who run the stores. I was the only designer and also the product manager, and I took it from competitor research to three releases in our first client’s stores — a US burger chain whose combos nest up to five levels deep. The POS owns the menu, the payment terminal runs on its own connection, and the client can’t hold unpaid orders — so every surface was designed around what the POS syncs and what happens when something fails.</p>
         <ul class="bullets">
-          <li>Turned a POS-synced menu with modifiers nested up to five levels deep, and thousands of options in a single combo, into ordering flows a guest or a cashier can get through quickly.</li>
-          <li>Designed for failure as much as for success: payment, printer and POS outages all follow one rule — the guest always knows whether they were charged, and always has a way out.</li>
-          <li>Built the admin side so restaurants run it themselves: menu inheritance and overrides, taxes, kiosk theme and order flow, banners, devices and integrations.</li>
+          <li>I took modifiers from a single level to nested groups up to five levels deep, with defaults that fill whole chains and clear rules for what happens when a guest changes a choice.</li>
+          <li>I designed every error flow around one rule — the guest always knows whether they were charged — across terminal, printer and POS outages.</li>
+          <li>I built an inherit-then-override model for menus, items and taxes, so restaurants manage one catalog across locations and channels while POS-synced fields stay locked.</li>
         </ul>
       </section>
 
       <section class="case-section fade">
         <h2>Role and responsibilities</h2>
-        <p>One designer, one product owner: I write the requirements, design every surface, and hand off to the development team release by release.</p>
+        <p>Neon Ordering connects four surfaces to the restaurant’s POS and delivery apps, so a menu built once can be ordered from a kiosk, rung up at the counter, and sent to the kitchen and to delivery partners.</p>
+        <p>As the only designer and the product manager, I owned the product from research to release: I ran the research, wrote the requirements, designed every surface, and handed off to the development team release by release.</p>
         <dl class="def-grid">
-          <div><dt>Product management</dt><dd>Research, scope and roadmap with stakeholders; PRDs and tickets with acceptance criteria; release planning with the dev team.</dd></div>
+          <div><dt>Research</dt><dd>Teardowns of leading ordering and POS products, and a study of how a POS models menus, items and modifier groups.</dd></div>
+          <div><dt>Product management</dt><dd>Scope and roadmap with stakeholders, PRDs and tickets with acceptance criteria, and release planning with the dev team.</dd></div>
           <div><dt>Self-order kiosk</dt><dd>Guest ordering flow, nested modifiers, upsells, payment, error and offline states, and an accessibility reach mode.</dd></div>
-          <div><dt>Menu manager</dt><dd>Catalog and menu items with inheritance and overrides, modifier groups and pricing, taxes, kiosk banners and publishing.</dd></div>
+          <div><dt>Menu manager</dt><dd>Catalog, menus and items with inheritance and overrides, modifier groups and pricing, taxes and kiosk banners.</dd></div>
           <div><dt>Cashier app</dt><dd>Quick order, modifiers and payment at the counter, an orders feed for delivery apps, and store settings.</dd></div>
           <div><dt>Integrations &amp; devices</dt><dd>POS connection and location mapping, delivery channels, kiosk pairing and device management.</dd></div>
-          <div><dt>Developer handoff</dt><dd>Handover docs with before/after changes, behaviour rules, QA checklists and open questions.</dd></div>
+          <div><dt>Developer direction</dt><dd>Handover docs with before/after changes, behaviour rules, QA checklists and open questions.</dd></div>
         </dl>
       </section>
 
       <section class="case-section fade">
+        <h2>Design challenge</h2>
+        <p>Build one platform that works for a guest ordering alone at a 24-inch kiosk, a cashier serving a queue at the counter, and an admin managing menus across locations — while the POS owns the data, and any part of the chain can fail mid-order.</p>
+        <div class="stats">
+          <div><b>4</b><span>Surfaces, one menu</span></div>
+          <div><b>5</b><span>Levels of nested modifiers</span></div>
+          <div><b>3</b><span>Releases shipped</span></div>
+          <div><b>1</b><span>Designer, also the PM</span></div>
+        </div>
+
+        <div class="theme-group">
+          <p class="meta"><span>Menu complexity</span><span>2 challenges</span></p>
+          <dl class="def-grid">
+            <div><dt>Deeply nested combos</dt><dd>The client’s combos nest up to five levels deep — burger, side, drink, size, flavour — with thousands of possible choices in a single combo.</dd></div>
+            <div><dt>Shared modifier groups</dt><dd>The same groups, like sizes and toppings, are reused across dozens of items and had to behave the same everywhere.</dd></div>
+          </dl>
+        </div>
+        <div class="theme-group">
+          <p class="meta"><span>POS as the source of truth</span><span>2 challenges</span></p>
+          <dl class="def-grid">
+            <div><dt>POS-owned fields</dt><dd>Prices, locations, channels and availability can come from the POS, so the admin had to show what’s synced and what’s editable.</dd></div>
+            <div><dt>More than one POS</dt><dd>We started with one POS and others follow, so the model couldn’t be tied to a single provider.</dd></div>
+          </dl>
+        </div>
+        <div class="theme-group">
+          <p class="meta"><span>Failure in the store</span><span>2 challenges</span></p>
+          <dl class="def-grid">
+            <div><dt>No unpaid orders</dt><dd>The client can’t hold unpaid orders, so “save it and pay later” was never an option.</dd></div>
+            <div><dt>Independent hardware</dt><dd>The payment terminal and the printer run on their own, so either can fail while the kiosk keeps working.</dd></div>
+          </dl>
+        </div>
+        <div class="theme-group">
+          <p class="meta"><span>Speed &amp; access</span><span>2 challenges</span></p>
+          <dl class="def-grid">
+            <div><dt>Speed at the counter</dt><dd>Cashiers serve a queue — every extra tap, scan or popup costs time.</dd></div>
+            <div><dt>Reach on a tall kiosk</dt><dd>On a portrait kiosk, much of the screen sits above a seated guest’s reach.</dd></div>
+          </dl>
+        </div>
+
+        <p><strong>How these shaped the work.</strong> These challenges drove four foundational decisions: drill-in modifiers with defaults and clear rules for changing a choice, an inherit-then-override model where a field only locks when the POS syncs it, error flows built around the charge status, and a dense, text-first cashier app with one control per job.</p>
+      </section>
+
+      <section class="case-section fade">
         <h2>Process</h2>
-        <p>Research first, then decide what not to build. Before designing the menu manager I tore down how leading ordering and POS products handle importing, building, editing and 86’ing menus, mapped how a POS models menus, items and modifier groups, and put every open question on the board for stakeholders to answer — “Needed”, “Won’t do now”, “One POS first, others later”.</p>
+        <p>Research first, then decide what not to build — every open question went on the research board, and stakeholders answered it right next to the question.</p>
         <ol class="steps">
-          <li><div><b>Research &amp; open questions</b><p>Competitor teardowns, POS data models, and stakeholder answers captured next to each question.</p></div></li>
-          <li><div><b>Scope</b><p>Split must-haves from later phases — for example, read-only menu sync from the POS first, write-back later.</p></div></li>
-          <li><div><b>Explore options</b><p>Alternatives side by side (A/B, sometimes C and D) with a recommendation and the trade-offs.</p></div></li>
-          <li><div><b>Audit my own work</b><p>Gap, copy and consistency audits before handoff — missing states, totals that don’t add up, terms used two ways.</p></div></li>
-          <li><div><b>Handoff</b><p>Handover docs, behaviour rules and tickets with acceptance criteria.</p></div></li>
-          <li><div><b>Release &amp; feedback</b><p>Client feedback from the stores shapes the next release.</p></div></li>
+          <li><div><b>Competitor research</b><p>Teardowns of leading ordering and POS products: importing, building and editing menus, 86’ing items, multi-menus and reports.</p></div></li>
+          <li><div><b>POS data model</b><p>How a POS structures menus, groups, items, modifier groups and modifiers — the base for our own model.</p></div></li>
+          <li><div><b>Open questions</b><p>Answered by stakeholders on the board: “Needed” · “Won’t do now” · “One POS first, others later”.</p></div></li>
+          <li><div><b>Scope</b><p>Must-haves vs later phases — read-only menu sync first, write-back later.</p></div></li>
+          <li><div><b>Explore options</b><p>Alternatives side by side, with a recommendation and the trade-offs.</p></div></li>
+          <li><div><b>Audit</b><p>Gap, copy and consistency audits of my own flows before handoff.</p></div></li>
+          <li><div><b>Hand-off</b><p>Handover docs, behaviour rules and tickets with acceptance criteria.</p></div></li>
+          <li><div><b>Release &amp; feedback</b><p>Feedback from the client’s stores shapes the next release.</p></div></li>
+        </ol>
+        <p>It’s a continuous loop: feedback from the stores and the dev team goes straight back onto the research board and into the next release.</p>
+      </section>
+
+      <section class="case-section fade">
+        <h2>Key decisions</h2>
+        <dl class="def-grid">
+          <div><dt>Block ordering, don’t save it</dt><dd>When the payment terminal is down, the kiosk stops taking orders at the start screen instead of letting a guest build a bag they can’t pay for.</dd></div>
+          <div><dt>Always say if they were charged</dt><dd>Every error tells the guest whether they were charged and gives them a way out — “order at the counter”, never “pay at the counter”.</dd></div>
+          <div><dt>A loader that never fakes progress</dt><dd>A payment wait has no known end, so the loader loops; the celebration only plays on a real approval.</dd></div>
+          <div><dt>A kiosk isn’t a phone</dt><dd>I rejected mobile ordering patterns and took touch targets from about 24px to 50–60px and body text to 17–18px.</dd></div>
+          <div><dt>Lock only what the POS syncs</dt><dd>The POS name is a variable and a field only locks when the connected POS actually owns it, so the product isn’t tied to one provider.</dd></div>
+          <div><dt>One control per job</dt><dd>At the counter: radio to pick one, checkbox to pick several, a stepper for repeatable add-ons — and no item photos, so more fits on screen.</dd></div>
+        </dl>
+      </section>
+
+      <section class="case-section fade">
+        <h2>Outcomes</h2>
+        <p>The kiosk is live in our first client’s stores after three releases, and feedback from those stores drove the second and third. The cashier app, delivery integrations and accessibility mode are designed and next in line.</p>
+        <ol class="steps">
+          <li><div><b>Self-order kiosk</b><p>Live in stores, with a configurable order flow, guest information and upsells.</p></div></li>
+          <li><div><b>Nested modifiers</b><p>Combos up to five levels deep, with defaults and rules for changing a choice.</p></div></li>
+          <li><div><b>Error handling</b><p>Terminal, printer and POS outages that always tell the guest where they stand.</p></div></li>
+          <li><div><b>Menu manager</b><p>One catalog across menus, locations and channels, with overrides and POS-synced fields.</p></div></li>
+          <li><div><b>Taxes</b><p>Create a rate once, then inherit it or override it per menu or item.</p></div></li>
+          <li><div><b>Cashier app</b><p>A dense, text-first quick order with required choices and payment.</p></div></li>
+          <li><div><b>Integrations</b><p>POS location mapping and delivery channels with pause, busy mode and recovery.</p></div></li>
+          <li><div><b>Accessibility</b><p>A reach mode that keeps every control within ADA forward-reach range.</p></div></li>
         </ol>
       </section>
 
       <section class="case-section fade">
-        <h2>Kiosk: designing for when things go wrong</h2>
-        <p>The client couldn’t hold unpaid orders, so “save the order and pay later” was never an option. That single constraint reshaped every error flow:</p>
-        <ul class="bullets">
-          <li>If the payment terminal is out of service, the kiosk stops taking orders at the start screen, instead of letting a guest build a bag they can’t pay for.</li>
-          <li>Every error says whether the guest was charged, and every screen has a way out. The copy says “order at the counter”, never “pay at the counter”.</li>
-          <li>A short reference number appears on screen; card details only ever go on the printed slip, never on a public display.</li>
-          <li>The payment loader loops for as long as the terminal needs, because the wait has no known end. The celebration only plays on a real approval.</li>
-          <li>A simple rule for developers: if the guest can recover where they are, it’s a modal; if they can’t, it’s a full screen.</li>
-        </ul>
+        <h2>Use cases</h2>
+        <div class="cases">
+          <article>
+            <h3>US burger chain</h3>
+            <p>Our first client runs the kiosk in its stores, with the menu synced from its POS. Its combos nest up to five levels deep, so nested modifiers, defaults and readable kitchen tickets were built around its menu. When a store reported combo items printing with only their size on kitchen tickets, I traced it to the modifier naming, set up the workaround and filed the fix.</p>
+          </article>
+          <article>
+            <h3>Gas-station chicken franchise</h3>
+            <p>The anchor client for the cashier app and the kiosk’s Order Only mode: small stores, one cashier and a short menu of combos and sauces. Their real menu drove the cashier redesign — text-first tiles, required choices counted down, and repeatable sauces with a stepper.</p>
+          </article>
+        </div>
       </section>
 
       <section class="case-section fade">
-        <h2>Nested modifiers at kiosk scale</h2>
-        <p>The client’s combos nest up to five levels deep — burger, side, drink, size, flavour. I explored stacked bottom sheets, a step rail and an inline pattern, and rejected the ones that came from mobile ordering: a 24-inch portrait kiosk isn’t a phone. Alongside, a kiosk sizing pass took touch targets from around 24px to 50–60px and body text from 13–15px to 17–18px, and a set of rules defined what happens when a guest changes a choice that has sub-choices.</p>
+        <h2>Cashier app</h2>
+        <p>Screens from the cashier app used at the counter. Scroll sideways, or click one to enlarge it.</p>
       </section>
+    </article>
 
+    <div class="carousel carousel--captions fade" data-carousel>
+      <div class="carousel__track">
+        <figure class="carousel__item"><div class="carousel__frame" data-zoom><img src="assets/img/neon-ordering/v2/pos-quick-order.png" width="1366" height="1024" alt="Cashier quick order screen with categories, menu items and an empty order panel" loading="lazy"></div><figcaption><b>Quick order</b>A category rail, a text-first menu grid with prices, and the order panel with dine-in or take-away and live totals.</figcaption></figure>
+        <figure class="carousel__item"><div class="carousel__frame" data-zoom><img src="assets/img/neon-ordering/v2/pos-item-options.png" width="1366" height="1024" alt="Cashier item options with required modifier groups" loading="lazy"></div><figcaption><b>Item options</b>Building a combo at the counter: required groups for meat, seasoning, side and drink laid out as large tap targets.</figcaption></figure>
+        <figure class="carousel__item"><div class="carousel__frame" data-zoom><img src="assets/img/neon-ordering/v2/pos-orders-feed.png" width="1366" height="1024" alt="Live orders feed with order cards and a detail panel" loading="lazy"></div><figcaption><b>Orders feed</b>Incoming delivery, phone and walk-in orders with countdowns, and a detail panel to accept and set prep time.</figcaption></figure>
+        <figure class="carousel__item"><div class="carousel__frame" data-zoom><img src="assets/img/neon-ordering/v2/pos-delivery-channels.png" width="1366" height="1024" alt="Delivery channel settings with busy mode on" loading="lazy"></div><figcaption><b>Delivery channels</b>Busy mode adds extra prep time across channels, while each storefront can be paused or resumed on its own.</figcaption></figure>
+        <figure class="carousel__item"><div class="carousel__frame" data-zoom><img src="assets/img/neon-ordering/v2/pos-order-history.png" width="1366" height="1024" alt="Order history list with statuses and channels" loading="lazy"></div><figcaption><b>Order history</b>Completed, declined and cancelled orders by channel, with a one-tap receipt reprint.</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="wrap">
       <section class="case-section fade">
-        <h2>Accessibility reach mode</h2>
-        <p>On a tall kiosk, much of the screen sits above a wheelchair user’s reach. Reach mode keeps the top of the screen for information only and moves every control into the lower part, inside the ADA forward-reach range of 15–48 inches. Because kiosks are mounted at different heights, the reach line is calibrated per installation, documented with a formula and a QA checklist for developers.</p>
+        <h2>Dashboard</h2>
+        <p>The menu manager, taxes, integrations, devices, guests and kiosk theme. Scroll sideways, or click one to enlarge it.</p>
       </section>
+    </div>
 
-      <section class="case-section fade">
-        <h2>Menu manager: inherit, then override</h2>
-        <p>Restaurants build a catalog once and reuse it across menus, locations and channels. A menu item inherits everything from its catalog item and can override only what makes sense: locations and channels as a subset, price only when the POS doesn’t own it. Overridden fields are tagged, with a reset per field and a reset for the whole item.</p>
-        <p>Taxes follow the same model: create a rate once, assign it to a menu, and let items inherit it or override it. To keep the product from being tied to one POS, the POS name is a variable and a field is only locked when the connected POS actually syncs it.</p>
-        <figure class="figure figure--wide">
-          <div class="figure__frame" data-zoom><img src="assets/img/neon-ordering/menu-tax-override.png" width="1440" height="1476" alt="Edit menu form with an Override tax switch on and two of four tax rates selected for the whole menu" loading="lazy"></div>
-          <figcaption>Menu-level taxes that every item inherits unless it overrides them</figcaption>
-        </figure>
-        <figure class="figure figure--wide">
-          <div class="figure__frame" data-zoom><img src="assets/img/neon-ordering/modifier-group-create.png" width="1319" height="1600" alt="Create modifier group form with group pricing, a reorderable list of sauces, required selection with min and max, and POS and kiosk visibility" loading="lazy"></div>
-          <figcaption>Modifier groups with pricing strategy and selection rules</figcaption>
-        </figure>
-        <figure class="figure figure--wide">
-          <div class="figure__frame" data-zoom><img src="assets/img/neon-ordering/tax-create.png" width="1440" height="1310" alt="Create tax form with a percentage rate, an optional takeout rate, four rounding options and a Check your tax calculator" loading="lazy"></div>
-          <figcaption>Create a tax rate once, with rounding and a built-in check</figcaption>
-        </figure>
-        <figure class="figure figure--wide">
-          <div class="figure__frame" data-zoom><img src="assets/img/neon-ordering/par-item-create.png" width="1440" height="1262" alt="Create item screen in POS mode with a banner saying the item is not linked yet and a Link POS item action" loading="lazy"></div>
-          <figcaption>When the POS owns a field, it syncs and locks; everything else stays editable</figcaption>
-        </figure>
-      </section>
+    <div class="carousel carousel--captions fade" data-carousel>
+      <div class="carousel__track">
+        <figure class="carousel__item"><div class="carousel__frame" data-zoom><img src="assets/img/neon-ordering/v2/admin-menus-list.png" width="1440" height="1080" alt="Menu manager list of menus" loading="lazy"></div><figcaption><b>Menus</b>Every menu with its categories, location coverage and sales channels, from kiosk to POS.</figcaption></figure>
+        <figure class="carousel__item"><div class="carousel__frame" data-zoom><img src="assets/img/neon-ordering/v2/admin-menu-categories.png" width="1440" height="1080" alt="Menu profile with categories and item rows" loading="lazy"></div><figcaption><b>Menu profile</b>Collapsible categories with items, locations, modifier groups and prices, and a clear publish state.</figcaption></figure>
+        <figure class="carousel__item"><div class="carousel__frame" data-zoom><img src="assets/img/neon-ordering/v2/admin-edit-menu-item.png" width="1440" height="1970" alt="Edit menu item page with overrides switched on and a kiosk preview" loading="lazy"></div><figcaption><b>Menu item overrides</b>Price and tax overrides per menu, visibility by location and channel, and a live kiosk preview.</figcaption></figure>
+        <figure class="carousel__item"><div class="carousel__frame" data-zoom><img src="assets/img/neon-ordering/v2/admin-tax-calculation.png" width="1440" height="1080" alt="Tax calculation list" loading="lazy"></div><figcaption><b>Taxes</b>Sales, prepared-food, city and alcohol taxes with dine-in and takeout rates and the locations each applies to.</figcaption></figure>
+        <figure class="carousel__item"><div class="carousel__frame" data-zoom><img src="assets/img/neon-ordering/v2/admin-integrations.png" width="1440" height="1080" alt="Integrations catalog with POS and payment providers" loading="lazy"></div><figcaption><b>Integrations</b>POS systems and payment providers connected from one place.</figcaption></figure>
+        <figure class="carousel__item"><div class="carousel__frame" data-zoom><img src="assets/img/neon-ordering/v2/admin-devices.png" width="1440" height="1080" alt="Device management list" loading="lazy"></div><figcaption><b>Devices</b>Every kiosk and cashier device with its status, location, type and setup date.</figcaption></figure>
+        <figure class="carousel__item"><div class="carousel__frame" data-zoom><img src="assets/img/neon-ordering/v2/admin-guest-crm.png" width="1440" height="1080" alt="Guest CRM list" loading="lazy"></div><figcaption><b>Guest CRM</b>Returning and new kiosk guests, with masked phone numbers, order counts and last visit.</figcaption></figure>
+        <figure class="carousel__item"><div class="carousel__frame" data-zoom><img src="assets/img/neon-ordering/v2/kiosk-theme-builder.png" width="1440" height="1080" alt="Kiosk theme builder settings" loading="lazy"></div><figcaption><b>Kiosk theme builder</b>Brand logo and home background, idle video, theme colours and ordering options for every kiosk.</figcaption></figure>
+      </div>
+    </div>
 
-      <section class="case-section fade">
-        <h2>Cashier: speed at the counter</h2>
-        <p>I started by auditing my own first flow and found what I’d missed: no payment step, totals that didn’t add up across screens, and 20px tap targets. The redesign is built around how fast a cashier needs to move:</p>
-        <ul class="bullets">
-          <li>No item photos — staff know the menu, so text tiles fit more on screen and scan faster.</li>
-          <li>One control per job: radio to pick one, checkbox to pick several, a stepper for repeatable add-ons.</li>
-          <li>Required modifier groups are marked, and “Done” stays locked until they’re answered.</li>
-          <li>The order total lives on the main button; sold-out items move to the end of the list.</li>
-          <li>Red is kept for confirmed destructive actions only, so it still means something.</li>
-        </ul>
-        <figure class="figure figure--wide">
-          <div class="figure__frame" data-zoom><img src="assets/img/neon-ordering/pos-item-options.png" width="1366" height="1024" alt="Cashier item options for a chicken combo with required groups badged, nested options, and a counter showing five required choices left beside a disabled Add to order button" loading="lazy"></div>
-          <figcaption>Required choices are counted down; Add to order unlocks when they’re answered</figcaption>
-        </figure>
-      </section>
-
-      <section class="case-section fade">
-        <h2>Integrations people can trust</h2>
-        <p>Connecting a POS or a delivery app is where a restaurant decides whether to trust the product. The setup is gated step by step — locations can’t be mapped until the POS connection works — credentials are masked, duplicate mappings are blocked, and every failure has a recovery path: requirements missing, menu import failed, channel disconnected. Delivery channels can be paused, put in busy mode or activated with a checklist and a test order.</p>
-        <figure class="figure figure--wide">
-          <div class="figure__frame" data-zoom><img src="assets/img/neon-ordering/par-pos-integration.png" width="1440" height="1080" alt="POS integration setup listing restaurant locations, each mapped to an external POS location ID and name" loading="lazy"></div>
-          <figcaption>Mapping restaurant locations to the POS</figcaption>
-        </figure>
-        <figure class="figure figure--wide">
-          <div class="figure__frame" data-zoom><img src="assets/img/neon-ordering/integrations-pause-storefront.png" width="1366" height="1024" alt="Pause delivery channel dialog with now or later today, a pause-until time, a reason and a link to special hours" loading="lazy"></div>
-          <figcaption>Pausing a delivery channel when the kitchen is overloaded</figcaption>
-        </figure>
-        <figure class="figure figure--wide">
-          <div class="figure__frame" data-zoom><img src="assets/img/neon-ordering/kiosk-add-device.png" width="1440" height="1370" alt="Add device flow: choose kiosk or cashier, pair by serial number or QR code, name it, assign a location and choose a mode" loading="lazy"></div>
-          <figcaption>Pairing a kiosk to a location</figcaption>
-        </figure>
-      </section>
-
-      <section class="case-section fade">
-        <h2>Outcome</h2>
-        <p>The kiosk is live in our first client’s stores after three releases, including a configurable order flow and guest information, nested modifiers and upsells. Feedback from the stores drove the second and third releases. The cashier app, delivery integrations and accessibility mode are next.</p>
-      </section>
-
+    <div class="wrap">
       <nav class="next-project" aria-label="More case studies">
         <a href="the-tablegroup.html"><span class="meta">Previous</span><span class="name">The Tablegroup</span></a>
         <a href="niza-global.html"><span class="meta">Next</span><span class="name">Niza Global</span></a>
       </nav>
-    </article>
+    </div>
   </main>
 
   <footer data-footer></footer>
