@@ -78,7 +78,7 @@
       const others = PROJECTS.filter((x) => x !== p);
       root.innerHTML = `
         <header class="case-top">
-          <a class="back-link" href="index.html#more-work">← All work</a>
+          <a class="back-link" href="index.html#${["boost-retail", "walmart-all-access"].includes(p.id) ? p.id : "more-work"}">← All work</a>
           ${logo(p)}
           <h1>${esc(p.name)}</h1>
           <p class="project__role">${esc(p.client)}</p>
